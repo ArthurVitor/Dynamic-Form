@@ -1,0 +1,302 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                
+                                
+                                <!--[ Recent Users ] start-->
+                                <div class="col-xl-12 col-md-12">
+                                    <div class="card Recent-Users">
+                                        <div class="card-header">
+                                            <h5 class="col-10">Formulario</h5>
+                                            <a href="{% url 'create_formulario' %}" class="label theme-bg text-white f-2 arredondar-botao">Adicionar</a>
+                                        </div>
+                                        <div class="card-block px-0 py-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                          <th scope="col">Executivo</th>
+                                                          <th scope="col">Legislativo</th>
+                                                          <th scope="col">Judiciário</th>
+                                                          <th scope="col">Tipo do ente federativo</th>
+                                                          <th scope="col">Nome do ente federativo</th>
+                                                          <th scope="col">Nome do dirigente</th>
+                                                          <th scope="col">Telefone</th>
+                                                          <th scope="col">Email</th>
+                                                          <th scope="col">Meta de taxa juros</th>
+                                                          <th scope="col">Indexador de inflação</th>
+                                                          <th scope="col"><abbr title="O TESOURO É RESPONSÁVEL PELO PAGAMENTO DE ALGUM BENEFÍCIO DE APOSENTADORIA E/OU PENSÃO POR MORTE, QUE NÃO SE CARACTERIZE COMO SEGREGAÇÃO DE MASSAS ?">O tesouro é responsável pelo pagamento de algum benefício?</abbr></th>
+                                                          <th scope="col"><abbr title="Nº da lei transfere o pagamento de alguns beneficio de aposentadoria e/ou pensão por morte para o TESOURO">Nº da lei que transfere o pagamento</abbr></th>
+                                                          <th scope="col"><abbr title="Dispositivo da lei transfere o pagamento de alguns beneficio de aposentadoria e/ou pensão por morte para o TESOURO (Ex.: Art. 1º, Par. 2º, Inc III)">Dispositivo da lei</abbr></th>
+                                                          <th scope="col"><abbr title="Data da publicação da lei transfere o pagamento de alguns beneficio de aposentadoria e/ou pensão por morte para o TESOURO">Data da publicação da lei</abbr></th>
+                                                          <th scope="col">Atuario responsável</th>
+                                                          <th scope="col">MIBA</th>
+                                                          <th scope="col">Tipo do documento</th>
+                                                          <th scope="col">Numero do Documento</th>
+                                                          <th scope="col">Data do documento</th>
+                                                          <th scope="col">Nome do plano</th>
+                                                          <th scope="col">Critério de segregação</th>
+                                                          <th scope="col">Número da lei de criação do RPPS</th>
+                                                          <th scope="col">Data publicação</th>
+                                                          <th scope="col">Numero da lei que reestrutura o RPPS</th>
+                                                          <th scope="col">Data publicação</th>
+                                                          <th scope="col">Numero da lei que define aliquotas de contribuição</th>
+                                                          <th scope="col">Data publicação</th>
+                                                          <th scope="col">Numero da lei que define as aliquotas de contribuição de aliquotas suplementares</th>
+                                                          <th scope="col">Data publicação</th>
+                                                          <th scope="col">Ativos na base cadastral</th>
+                                                          <th scope="col">Data último recenseamento</th>
+                                                          <th scope="col">Percentual de cobertura</th>
+                                                          <th scope="col">Aposentados na base cadastral</th>
+                                                          <th scope="col">Data último recenseamento</th>
+                                                          <th scope="col">Percentual de cobertura</th>
+                                                          <th scope="col">Renda fixa valor </th>
+                                                          <th scope="col">Renda fixa apuração </th>
+                                                          <th scope="col">Renda variável valor </th>
+                                                          <th scope="col">Renda variável apuração </th>
+                                                          <th scope="col">Segmento Imobiliário valor (Bens Imóveis) </th>
+                                                          <th scope="col">Segmento Imobiliário apuração (Bens Imóveis) </th>
+                                                          <th scope="col">Segmento Imobiliário valor (Fundos Imobiliários) </th>
+                                                          <th scope="col">Segmento Imobiliário apuração (Fundos Imobiliários) </th>
+                                                          <th scope="col">Aplicações em enquadramento valor </th>
+                                                          <th scope="col">Aplicações em enquadramento apuração </th>
+                                                          <th scope="col">Titulos e Valores não sujeitos ao enquadramento valor </th>
+                                                          <th scope="col">Titulos e Valores não sujeitos ao enquadramento apuração </th>
+                                                          <th scope="col">Demais bens, direitos e ativos valor </th>
+                                                          <th scope="col">Demais bens, direitos e ativos apuração </th>
+                                                          <th scope="col">Alíquota dos servidores ATIVOS </th>
+                                                          <th scope="col">Base De Cálculo </th>
+                                                          <th scope="col">Alíquota dos APOSENTADOS</th>
+                                                          <th scope="col">Base De Cálculo </th>
+                                                          <th scope="col">Alíquota dos PENSIONISTAS </th>
+                                                          <th scope="col">Base De Cálculo </th>
+                                                          <th scope="col">Alíquota PATRONAL relativo aos servidores ativos </th>
+                                                          <th scope="col">Base De Cálculo </th>
+                                                          <th scope="col">Despesa administrativa custeada por</th>
+                                                          <th scope="col">Número da norma que define o custeio das despesas</th>
+                                                          <th scope="col">Artigo da norma que define o CUSTEIO das despesas administrativas </th>
+                                                          <th scope="col">Alíquota utilizada para o cálculo do LIMITE de gastos com a despesa administrativa </th>
+                                                          <th scope="col">Alíquota utilizada para o CUSTEIO das despesas administrativas (custeio administrativo)</th>
+                                                          <th scope="col">A aliquota para o CUSTEIO das despesas administrativas está incluida na aliquota patronal informada no quadro anterior ? </th>
+                                                          <th scope="col">Valor da remuneração dos servidores ativos em 2022</th>
+                                                          <th scope="col">Valor dos proventos dos aposentados em 2022</th>
+                                                          <th scope="col">Valor dos proventos dos Pensionistas em 2022</th>
+                                                          <th scope="col">"Base de calculo da taxa de adminstração (2022)"</th>
+                                                          <th scope="col">"Base de calculo da taxa de adminstração (2021)"</th>
+                                                          <th scope="col">"Base de calculo da taxa de adminstração (2020)"</th>
+                                                          <th scope="col">% da taxa de administração 2022</th>
+                                                          <th scope="col">% da taxa de administração 2021</th>
+                                                          <th scope="col">% da taxa de administração 2020</th>
+                                                          <th scope="col">Gastos com as despesas administrativas 2022</th>
+                                                          <th scope="col">Gastos com as despesas administrativas 2021</th>
+                                                          <th scope="col">Gastos com as despesas administrativas 2020</th>
+                                                          <th scope="col">Base de contribuição dos servidores ativos 2022</th>
+                                                          <th scope="col">Base de contribuição dos servidores ativos 2021</th>
+                                                          <th scope="col">Base de contribuição dos servidores ativos 2020</th>
+                                                          <th scope="col">Há convênio ASSINADO de COMPENSAÇÃO PREVIDENCIÁRIA, de servidores vinculados ao RPPS?</th>
+                                                          <th scope="col">Foi informado na base cadastral dos aposentados e/ou pensionistas, o valor que este Ente Publico esta recebendo de compensação previdenciária?</th>
+                                                          <th scope="col">Se NÃO, informar o fluxo mensal médio, sobre os valores a receber</th>
+                                                          <th scope="col">Informar o fluxo mensal médio, sobre os valores a pagar</th>
+                                                          <th scope="col">Há ESTOQUE DE COMPENSAÇÃO PREVIDENCIÁRIA para receber?</th>
+                                                          <th scope="col">O ENTE PÚBLICO POSSUI PLANO PARA EQUACIONAMENTO</th>
+                                                          <th scope="col">QUAL É O MÊS E ANO QUE DEU INÍCIO AO PLANO DE EQUACIONAMENTO</th>
+                                                          <th scope="col">NÚMERO DA NORMA QUE DEFINE O PLANO DE AMORTIZAÇÃO</th>
+                                                          <th scope="col">DATA DA PUBLICAÇÃO DA LEI</th>
+                                                          <th scope="col">Há a constituição de FUNDO ADMINISTRATIVO ?</th>
+                                                          <th scope="col">Renda Fixa Valor RPPS</th>
+                                                          <th scope="col">Renda Fixa Apuração RPPS</th>
+                                                          <th scope="col">Renda Variavel Valor RPPS</th>
+                                                          <th scope="col">Renda Variavel Apuração RPPS</th>
+                                                          <th scope="col">Segmento Imobiliário (Bens Imóveis) Valor</th>
+                                                          <th scope="col">Segmento Imobiliário (Bens Imóveis) Apuração</th>
+                                                          <th scope="col">Segmento Imobiliário (Fundos Imobiliários) Valor</th>
+                                                          <th scope="col">Segmento Imobiliário (Fundos Imobiliários) Apuração</th>
+                                                          <th scope="col">Aplicações em enquadramento Valor</th>
+                                                          <th scope="col">Aplicações em enquadramento Apuração</th>
+                                                          <th scope="col">Titulos e Valores não sujeitos ao enquadramento Valor</th>
+                                                          <th scope="col">Titulos e Valores não sujeitos ao enquadramento Apuração</th>
+                                                          <th scope="col">Demais bens, direitos e ativos Valor</th>
+                                                          <th scope="col">Demais bens, direitos e ativos Apuração</th>
+                                                          <th scope="col">EXISTE(M) ACORDO(S) DE PARCELAMENTO DE DÍVIDAS</th>
+                                                          <th scope="col">ACORDO Nº (conforme DIPR)</th>
+                                                          <th scope="col">Lei / data de aprovação   </th>
+                                                          <th scope="col">Juros ( % a.m.)   </th>
+                                                          <th scope="col">Tipo de juros</th>
+                                                          <th scope="col">Nº da prestação em 31/12/22</th>
+                                                          <th scope="col">Índice de atualização</th>
+                                                          <th scope="col">Ano do acordo</th>
+                                                          <th scope="col">Valor da dívida (em R$)</th>
+                                                          <th scope="col">Valor prestação em 31/12/22</th>
+                                                          <th scope="col">Prazo total em meses   </th>
+                                                          <th scope="col">Saldo devedor em 31/12/22</th>
+                                                          <th scope="col">Acordo adimplente?</th>
+                                                          <th scope="col"></th>
+                                                        </tr>
+                                                      </thead>
+                                                    <tbody>
+                                                    {% for i in formulario %}
+                                                    <tr class="unread">   
+                                                        <td> {{i.executivo}} </td>
+                                                        <td> {{i.legislativo}} </td>
+                                                        <td> {{i.judiciario}} </td>
+                                                        <td> {{i.tipo_ente_federativo}} </td>
+                                                        <td> {{i.nome_ente}} </td>
+                                                        <td> {{i.nome_dirigente}} </td>
+                                                        <td> {{i.nome_telefone}} </td>
+                                                        <td> {{i.e_mail}} </td>
+                                                        <td> {{i.meta_de_taxa_de_juros}} </td>
+                                                        <td> {{i.indexador_de_inflação}} </td>
+                                                        <td> {{i.tesouro_responsavel_por_pagar_algum_beneficio}} </td>
+                                                        <td> {{i.numero_da_lei_transfere_o_pagamento}} </td>
+                                                        <td> {{i.dispositivo_lei_transfere_pagamento}} </td>
+                                                        <td> {{i.data_publicacao_lei_transfere_pagamento}} </td>
+                                                        <td> {{i.atuario_responsavel_pela_criacao}} </td>
+                                                        <td> {{i.miba}} </td>
+                                                        <td> {{i.tipo_documento}} </td>
+                                                        <td> {{i.numero_documento}} </td>
+                                                        <td> {{i.data_documento}} </td>
+                                                        <td> {{i.nome_plano}} </td>
+                                                        <td> {{i.criterio_segregacao}}</td>
+                                                        <td> {{i.numero_lei_criacao_rpps}} </td>
+                                                        <td> {{i.data_publicacao_lei_rpps}} </td>
+                                                        <td> {{i.numero_lei_reestrutura_rpps}} </td>
+                                                        <td> {{i.data_publicacao_reestruturou_rpps}} </td>
+                                                        <td> {{i.numero_lei_define_aliquotas}} </td>
+                                                        <td> {{i.publicacao_lei_define_aliquotas}} </td>
+                                                        <td> {{i.numero_lei_define_aliquotas_contribuicao}} </td>
+                                                        <td> {{i.data_lei_define_aliquotas_contribuicao}} </td>
+                                                        <td> {{i.ativos_base_cadastral}} </td>
+                                                        <td> {{i.data_ultimo_recenseamento_ativos}} </td>
+                                                        <td> {{i.percentual_cobertura_ativos}} </td>
+                                                        <td> {{i.aposentados_base_cadastral}} </td>
+                                                        <td> {{i.data_ultimo_recenseamento_aposentados}} </td>
+                                                        <td> {{i.percentual_cobertura_aposentados}} </td>
+                                                        <td> {{i.renda_fixa_valor}} </td>
+                                                        <td> {{i.renda_fixa_apuracao}} </td>
+                                                        <td> {{i.renda_variavel_valor}} </td>
+                                                        <td> {{i.renda_variavel_apuracao}} </td>
+                                                        <td> {{i.imobiliario_valor_imoveis}} </td>
+                                                        <td> {{i.imobiliario_apuracao_imoveis}} </td>
+                                                        <td> {{i.fundos_valor_imoveis}} </td>
+                                                        <td> {{i.fundos_apuracao_imoveis}} </td>
+                                                        <td> {{i.enquadramento_valor}} </td>
+                                                        <td> {{i.enquadramento_apuracao}} </td>
+                                                        <td> {{i.titulos_valores_nao_enquadramento_valor}} </td>
+                                                        <td> {{i.titulos_valores_nao_enquadramento_apuracao}} </td>
+                                                        <td> {{i.bens_direitos_ativos_valor}} </td>
+                                                        <td> {{i.bens_direitos_ativos_apuracao}} </td>
+                                                        <td> {{i.aliquota_ativos}} </td>
+                                                        <td> {{i.base_calculo_ativos}} </td>
+                                                        <td> {{i.aliquota_aposentados}} </td>
+                                                        <td> {{i.base_calculo_aposentados}} </td>
+                                                        <td> {{i.aliquota_pensionistas}} </td>
+                                                        <td> {{i.base_calculo_pensionistas}} </td>
+                                                        <td> {{i.aliquota_patronal_servidores_ativos}} </td>
+                                                        <td> {{i.base_calculo_aliquota_patronal}} </td>
+                                                        <td> {{i.despesa_custeada}} </td>
+                                                        <td> {{i.numero_norma_define_custeio_despesas_administrativas}} </td>
+                                                        <td> {{i.artigo_norma_define_custeio_despesas_administrativas}} </td>
+                                                        <td> {{i.aliquota_utilizada_calculo_limite_gastos}} </td>
+                                                        <td> {{i.aliquota_custeio_despesas_administrativas}} </td>
+                                                        <td> {{i.aliquota_incluida_na_aliquota_patronal}} </td>
+                                                        <td>{{i.valor_remuneracao_servidores_ativos}}</td>
+                                                        <td>{{i.valor_proventos_aposentados}}</td>
+                                                        <td>{{i.valor_proventos_pensionistas}}</td>
+                                                        <td>{{i.base_calculo_taxa_administracao_2022}}</td>
+                                                        <td>{{i.base_calculo_taxa_administracao_2021}}</td>
+                                                        <td>{{i.base_calculo_taxa_administracao_2020}}</td>
+                                                        <td>{{i.taxa_administracao_2022}}</td>
+                                                        <td>{{i.taxa_administracao_2021}}</td>
+                                                        <td>{{i.taxa_administracao_2020}}</td>
+                                                        <td>{{i.gastos_despesas_administrativas_2022}}</td>
+                                                        <td>{{i.gastos_despesas_administrativas_2021}}</td>
+                                                        <td>{{i.gastos_despesas_administrativas_2020}}</td>
+                                                        <td>{{i.base_contribuicao_servidores_ativos_2022}}</td>
+                                                        <td>{{i.base_contribuicao_servidores_ativos_2021}}</td>
+                                                        <td>{{i.base_contribuicao_servidores_ativos_2020}}</td>
+                                                        <td>{{i.convenio_assinado_compensacao_previdenciaria}}</td>
+                                                        <td>{{i.informado_base_cadastral_aposentados_e_ou_pensionistas}}</td>
+                                                        <td>{{i.informar_fluxo_mensal_valores_areceber}}</td>
+                                                        <td>{{i.informar_fluxo_mensal_a_pagar}}</td>
+                                                        <td>{{i.estoque_compensacao_previdenciaria_receber}}</td>
+                                                        <td>{{i.ente_possui_plano_equacionamento_deficit_atuarial}}</td>
+                                                        <td>{{i.mes_ano_inicio_plano_equacionamento}}</td>
+                                                        <td>{{i.numero_norma_define_plano_amortizacao}}</td>
+                                                        <td>{{i.data_publicacao_lei}}</td>
+                                                        <td>{{i.constituicao_fundo_administrativo}}</td>
+                                                        <td>{{i.renda_fixa_valor_rpps}}</td>
+                                                        <td>{{i.renda_fixa_valor_rpps_apuracao}}</td>
+                                                        <td>{{i.renda_variavel_rpps}}</td>
+                                                        <td>{{i.renda_variavel_rpps_apuracao}}</td>
+                                                        <td>{{i.segmento_imobiliario_rpps_valor}}</td>
+                                                        <td>{{i.segmento_imobiliario_rpps_apuracao}}</td>
+                                                        <td>{{i.segmento_fundo_imobiliario_rpps_valor}}</td>
+                                                        <td>{{i.segmento_fundo_imobiliario_rpps_apuracao}}</td>
+                                                        <td>{{i.aplicacoes_enquadramento_valor}}</td>
+                                                        <td>{{i.aplicacoes_enquadramento_apuracao}}</td>
+                                                        <td>{{i.titulos_valores_nao_sujeitos_enquadramento_valor}}</td>
+                                                        <td>{{i.titulos_valores_nao_sujeitos_enquadramento_apuracao}}</td>
+                                                        <td>{{i.demais_bens_valor}}</td>
+                                                        <td>{{i.demais_bens_apuracao}}</td>
+                                                        <td>{{i.existem_acordos_de_parcelamento_dividas}}</td>
+                                                        <td>{{i.acordo}}</td>
+                                                        <td>{{i.data_aprovacao}}</td>
+                                                        <td>{{i.juros}}</td>
+                                                        <td>{{i.tipo_juros}}</td>
+                                                        <td>{{i.numero_da_prestacao}}</td>
+                                                        <td>{{i.indice_atualizacao}}</td>
+                                                        <td>{{i.ano_acordo}}</td>
+                                                        <td>{{i.valor_divida}}</td>
+                                                        <td>{{i.valor_prestacao}}</td>
+                                                        <td>{{i.prazo_total_meses}}</td>
+                                                        <td>{{i.saldo_devedor}}</td>
+                                                        <td>{{i.acordo_adimplente}}</td>
+
+                                                        <td> <a class="label bg-info text-white f-12" href="#"><i class="feather icon-eye"></i></a>
+                                                             <a class="label bg-warning text-white f-12" href="{% url 'update_cadastroente' i.id %}"><i class="feather icon-edit"></i></a>
+                                                             <a class="label bg-danger text-white f-12" href="{% url 'delete_cadastroente' i.id %}"><i class="feather icon-trash-2"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor%}
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->            
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
