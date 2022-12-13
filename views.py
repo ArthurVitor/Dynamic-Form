@@ -8,14 +8,29 @@ from django.forms import inlineformset_factory
 
 ################ LIST ################
 
+@login_required
 def list_formulario(request):
+    '''
+    Função de listagem de Formulários
+    '''
+    #criação de permissao
+    Permissoes.create_permission(None, 'cadastros_view_formulario', 'Visualizar Formulário')
+    perm = PermissaoUser.user_perm(None, request.user ,'cadastros_view_formulario')
+    
+    #cliente = LoginCliente.objects.filter(usuario=request.user)
+
     formulario = Formulario.objects.all()
     context = {'formulario': formulario}
-    return render(request, 'cadastros/list/list_formulario.html', context)
+
+    if perm:
+        return render(request, 'cadastros/list/list_formulario.html', context)
+    else:
+        return redirect('err_403')
     
 
 ################ CREATE ################
 
+@login_required
 def create_formulario(request):
     formulario = Formulario()
     inline_formset = inlineformset_factory(Formulario, AcordoParcelamento, form=AcordoParcelamentoForm, extra=0, can_delete=False, min_num=1, validate_min=True)
