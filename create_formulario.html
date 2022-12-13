@@ -3,13 +3,10 @@
 {% block title %} Profile {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}
-
-
-{% endblock stylesheets %}
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-
+{% load static %}
 
     <!-- [ Main Content ] start -->
     <div class="pcoded-main-container">
@@ -32,466 +29,50 @@
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="col-12" style="margin-bottom: 10px;">Adicionar Ente</h5>
-                                            <button class="form-control" onclick="Mudarestado()">Segregado</button>
+                                            {% include 'includes/formulario_atuarial/nav_bar.html' %}
                                         </div>
-                                        <datalist id="outro_deletar">
-                                            <option value="Outro">
-                                            <option value="Deletar">
-                                        </datalist>
-                                        
                                         <div class="card-block">
                                             <form method="POST">
                                                 <div class="row">
                                                     {% csrf_token %}
                                                     <div class="col-sm-12 mb-1">
                                                         <div class="form-group">
-                                                            <div id="segregado" style="display: none;">
-                                                                <p style="font-size: 15px;">Parametros Segregação de Massa</p>
-                                                                 <p>Campo segregado</p>
-                                                                 <p>Renda fixa</p>
-                                                                 <input type="text" name="renda_fixa_valor_rpps_segregado" class="form-control" placeholder="Valor Renda Fixa" id="id_renda_fixa_valor_rpps_segregado">
-                                                                 <input type="date" name="renda_fixa_valor_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Renda Fixa" id="id_renda_fixa_valor_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Renda Variavel</p>
-                                                                 <input type="text" name="renda_variavel_rpps_segregado" class="form-control" placeholder="Valor Renda variável" id="id_renda_variavel_rpps_segregado">
-                                                                 <input type="date" name="renda_variavel_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Renda variável" id="id_renda_variavel_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Segmento Imobiliário</p>
-                                                                 <input type="text" name="segmento_imobiliario_rpps_valor_segregado" class="form-control" placeholder="Valor Segmento Imobiliário" id="id_segmento_imobiliario_rpps_valor_segregado">
-                                                                 <input type="date" name="segmento_imobiliario_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Segmento Imobiliário" id="id_segmento_imobiliario_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Segmento Imobiliário (Fundos Imobiliários)</p>
-                                                                 <input type="text" name="segmento_fundo_imobiliario_rpps_valor_segregado" class="form-control" placeholder="Valor Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_valor_segregado">
-                                                                 <input type="date" name="segmento_fundo_imobiliario_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Aplicações em enquadramento</p>
-                                                                 <input type="text" name="aplicacoes_enquadramento_valor_segregado" class="form-control" placeholder="Valor Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_valor_segregado">
-                                                                 <input type="date" name="aplicacoes_enquadramento_apuracao_segregado" class="form-control" placeholder="Data de apuração Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Titulos e valores não sujeitos ao enquadramento</p>
-                                                                 <input type="text" name="titulos_valores_nao_sujeitos_enquadramento_valor_segregado" class="form-control" placeholder="Valor Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_valor_segregado">
-                                                                 <input type="date" name="titulos_valores_nao_sujeitos_enquadramento_apuracao_segregado" class="form-control" placeholder="Data de apuração Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Demais bens</p>
-                                                                 <input type="text" name="demais_bens_valor_segregado" class="form-control" placeholder="Valor Demais Bens" id="id_demais_bens_valor_segregado">
-                                                                 <input type="date" name="demais_bens_apuracao_segregado" class="form-control" placeholder="Data de apuração Demais Bens" id="id_demais_bens_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Alíquotas de Contribuição Previdenciária</p>
-                                                                 <p>Ativos</p>
-                                                                 <input type="text" name="aliquota_ativos_segregado" class="form-control" placeholder="Aliquota ativos" id="id_aliquota_ativos_segregado">
-                                                                 <input type="text" name="base_calculo_ativos_segregado" class="form-control" placeholder="Base de Cálculo ativos" maxlength="50" id="id_base_calculo_ativos_segregado">
-                                                                 <hr>
-                                                                 <p>Aposentados</p>
-                                                                 <input type="text" name="aliquota_aposentados_segregado" class="form-control" placeholder="Aliquota aposentados" id="id_aliquota_aposentados_segregado">
-                                                                 <input type="text" name="base_calculo_aposentados_segregado" class="form-control" placeholder="Base de Cálculo aposentados" maxlength="50" id="id_base_calculo_aposentados_segregado">
-                                                                 <hr>
-                                                                 <p>Pensionistas</p>
-                                                                 <input type="text" name="aliquota_pensionistas_segregado" class="form-control" placeholder="Aliquota pensionistas" id="id_aliquota_pensionistas_segregado">
-                                                                 <input type="text" name="base_calculo_pensionistas_segregado" class="form-control" placeholder="Base De Cálculo Pensionistas" maxlength="50" id="id_base_calculo_pensionistas_segregado">
-                                                                 <hr>
-                                                                 <p>Patronal</p>
-                                                                 <input type="text" name="aliquota_patronal_servidores_ativos_segregado" class="form-control" placeholder="Aliquota patronal sobre servidores ativos" id="id_aliquota_patronal_servidores_ativos_segregado">
-                                                                 <input type="text" name="base_calculo_aliquota_patronal_segregado" class="form-control" placeholder="Base De Cálculo Patronal" maxlength="50" id="id_base_calculo_aliquota_patronal_segregado">
-                                                                 <hr>
-                                                                 <input type="text" name="ente_contribui_segregado" class="form-control" placeholder="Ente contribui?" id="contribuicao_ente_segregado" oninput="alterar_visibilidade('contribuicao_ente_segregado', 'ente_contribui_segregado_space')" list="sim_nao" maxlength="3">
-                                                                 <div id="ente_contribui_segregado_space">
-                                                                    <input type="text" name="base_calculo_patronal_sobre_aposentados_pensionistas_segregado" class="form-control" placeholder="Base de calculo patronal sobre aposentados e pensionistas" id="base_calculos_segregado_id" maxlength="50">
-                                                                 </div>
-                                                                 <hr>
-                                                                 <p>Administração do Fundo Previdenciário</p>
-                                                                 <input type="text" name="despesa_custeada_segregado" class="form-control" placeholder="A DESPESA ADMINSTRATIVA É CUSTEADA..." id="despesa_custeada_por_segregado" oninput="func_despesa_custeada_segregado('despesa_custeada_por_segregado')" list="administradoras" maxlength="50">
-                                                                 <input type="text" name="numero_norma_define_custeio_despesas_administrativas_segregado" class="form-control" placeholder="Número da norma que define o CUSTEIO das despesas administrativas" id="id_numero_norma_define_custeio_despesas_administrativas_segregado">
-                                                                 <input type="text" name="artigo_norma_define_custeio_despesas_administrativas_segregado" class="form-control" placeholder="Artigo da norma que define o CUSTEIO das despesas administrativas" maxlength="50" id="id_artigo_norma_define_custeio_despesas_administrativas_segregado">
-                                                                 <input type="text" name="aliquota_utilizada_calculo_limite_gastos_segregado" class="form-control" placeholder="Alíquota utilizada para o cálculo do LIMITE de gastos com a despesa administrativa" id="id_aliquota_utilizada_calculo_limite_gastos_segregado">
-                                                                 <div id="despesa_segregado_space" style="display: none;">
-                                                                    {{form.numero_norma_define_custeio_despesas_administrativas_segregado}}
-                                                                    {{form.artigo_norma_define_custeio_despesas_administrativas_segregado}}
-                                                                    {{form.aliquota_utilizada_calculo_limite_gastos_segregado}}
-                                                                    {{form.aliquota_custeio_despesas_administrativas_segregado}}
-                                                                    {{form.aliquota_incluida_na_aliquota_patronal_segregado}}
-                                                                 </div>
-                                                                 <hr>
-                                                                 <p>Cálculo do Limite de Gastos com as Despesas Administrativas</p>
-                                                                 <input type="text" name="valor_remuneracao_servidores_ativos_segregado" class="form-control" placeholder="Valor da remuneração dos servidores ativos em 2022" id="id_valor_remuneracao_servidores_ativos_segregado">
-                                                                 <input type="text" name="valor_proventos_aposentados_segregado" class="form-control" placeholder="Valor dos proventos dos aposentados em 2022" id="id_valor_proventos_aposentados_segregado">
-                                                                 <input type="text" name="valor_proventos_pensionistas_segregado" class="form-control" placeholder="Valor dos proventos dos Pensionistas em 2022" id="id_valor_proventos_pensionistas_segregado">
-                                                                 <hr>
-                                                                 <p>LEVANTAMENTO DAS DESPESAS ADMINISTRATIVAS DOS ÚLTIMOS TRÊS ANOS</p>
-                                                                 <p>Base de calculo da taxa de adminstração</p>
-                                                                 <input type="text" name="base_calculo_taxa_administracao_2022_segregado" class="form-control" placeholder="Base de calculo da taxa de adminstração (para o LIMITE de gastos ) 2022" id="id_base_calculo_taxa_administracao_2022_segregado">
-                                                                 <input type="text" name="base_calculo_taxa_administracao_2021_segregado" class="form-control" placeholder="Base de calculo da taxa de adminstração (para o LIMITE de gastos ) 2021" id="id_base_calculo_taxa_administracao_2021_segregado">
-                                                                 <input type="text" name="base_calculo_taxa_administracao_2020_segregado" class="form-control" placeholder="Base de calculo da taxa de adminstração (para o LIMITE de gastos ) 2020" id="id_base_calculo_taxa_administracao_2020_segregado">
-                                                                 <hr>
-                                                                 <p>Taxa de administração</p>
-                                                                 <input type="text" name="taxa_administracao_2022_segregado" class="form-control" placeholder="% da taxa de administração 2022" id="id_taxa_administracao_2022_segregado">
-                                                                 <input type="text" name="taxa_administracao_2021_segregado" class="form-control" placeholder="% da taxa de administração 2021" id="id_taxa_administracao_2021_segregado">
-                                                                 <input type="text" name="taxa_administracao_2020_segregado" class="form-control" placeholder="% da taxa de administração 2020" id="id_taxa_administracao_2020_segregado">
-                                                                 <hr>
-                                                                 <p>Gasto com despesas administrativas</p>
-                                                                 <input type="text" name="gastos_despesas_administrativas_2022_segregado" class="form-control" placeholder="Gastos com as despesas administrativas 2022" id="id_gastos_despesas_administrativas_2022_segregado">
-                                                                 <input type="text" name="gastos_despesas_administrativas_2021_segregado" class="form-control" placeholder="Gastos com as despesas administrativas 2021" id="id_gastos_despesas_administrativas_2021_segregado">
-                                                                 <input type="text" name="gastos_despesas_administrativas_2020_segregado" class="form-control" placeholder="Gastos com as despesas administrativas 2020" id="id_gastos_despesas_administrativas_2020_segregado">
-                                                                 <hr>
-                                                                 <p>Base de contribuição dos servidores ativos</p>
-                                                                 <input type="text" name="base_contribuicao_servidores_ativos_2022_segregado" class="form-control" placeholder="Base de contribuição dos servidores ativos 2022" id="id_base_contribuicao_servidores_ativos_2022_segregado">
-                                                                 <input type="text" name="base_contribuicao_servidores_ativos_2021_segregado" class="form-control" placeholder="Base de contribuição dos servidores ativos 2021" id="id_base_contribuicao_servidores_ativos_2021_segregado">
-                                                                 <input type="text" name="base_contribuicao_servidores_ativos_2020_segregado" class="form-control" placeholder="Base de contribuição dos servidores ativos 2020" id="id_base_contribuicao_servidores_ativos_2020_segregado">
-                                                                 <hr>
-                                                                 <p>Compensação Previdenciária</p>
-                                                                 <input type="text" name="convenio_assinado_compensacao_previdenciaria_segregado" class="form-control" placeholder="Há convênio ASSINADO de COMPENSAÇÃO PREVIDENCIÁRIA, de servidores vinculados ao RPPS?" id="convenio_assinado" list="sim_nao" oninput="ha_convenio_assinado('convenio_assinado')" maxlength="50" required>
-                                                                 <input type="text" name="informado_base_cadastral_aposentados_e_ou_pensionistas_segregado" class="form-control" placeholder="Foi informado na base cadastral dos aposentados e/ou pensionistas, o valor que este Ente Publico esta recebendo de compensação previdenciária?" list="sim_nao" oninput="func_base_cadastral('id_informado_base_cadastral_aposentados_e_ou_pensionistas')" maxlength="50" id="id_informado_base_cadastral_aposentados_e_ou_pensionistas_segregado">
-                                                                 <input type="text" name="informar_fluxo_mensal_valores_areceber_segregado" class="form-control" placeholder="Se NÃO, informar o fluxo mensal médio, sobre os valores a receber" id="id_informar_fluxo_mensal_valores_areceber_segregado">
-                                                                 <input type="text" name="informar_fluxo_mensal_a_pagar_segregado" class="form-control" placeholder="Informar o fluxo mensal médio, sobre os valores a pagar" id="id_informar_fluxo_mensal_a_pagar_segregado">
-                                                                 <input type="text" name="estoque_compensacao_previdenciaria_receber_segregado" class  ="form-control" placeholder="Há ESTOQUE DE COMPENSAÇÃO PREVIDENCIÁRIA para receber?" list="sim_nao" id="id_estoque_compensacao_previdenciaria_receber_segregado">
-                                                                 <hr>
-                                                                 <p>Equacionamento do Déficit Atuarial</p>
-                                                                 <input type="text" name="ente_possui_plano_equacionamento_deficit_atuarial_segregado" class="form-control" placeholder="O ENTE PÚBLICO POSSUI PLANO PARA EQUACIONAMENTO DO DÉFICIT ATUARIAL (CUSTO SUPLEMENTAR)?" maxlength="3" id="id_ente_possui_plano_equacionamento_deficit_atuarial_segregado">
-                                                                 <input type="date" name="mes_ano_inicio_plano_equacionamento_segregado" class="form-control" placeholder="QUAL É O MÊS E ANO QUE DEU INÍCIO AO PLANO DE EQUACIONAMENTO" id="id_mes_ano_inicio_plano_equacionamento_segregado">
-                                                                 <input type="text" name="numero_norma_define_plano_amortizacao_segregado" class="form-control" placeholder="NÚMERO DA NORMA QUE DEFINE O PLANO DE AMORTIZAÇÃO" maxlength="25" id="id_numero_norma_define_plano_amortizacao_segregado">
-                                                                 <input type="date" name="data_publicacao_lei_segregado" class="form-control" placeholder="DATA DA PUBLICAÇÃO DA LEI" id="id_data_publicacao_lei_segregado">
-                                                                 <hr>
-                                                                 <p>Constituição de Fundo Administrativo</p>
-                                                                 <p>Renda fixa</p>
-                                                                 <input type="text" name="renda_fixa_valor_rpps_segregado" class="form-control" placeholder="Valor Renda Fixa" id="id_renda_fixa_valor_rpps_segregado">
-                                                                 <input type="date" name="renda_fixa_valor_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Renda Fixa" id="id_renda_fixa_valor_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Renda Variavel</p>
-                                                                 <input type="text" name="renda_variavel_rpps_segregado" class="form-control" placeholder="Valor Renda variável" id="id_renda_variavel_rpps_segregado">
-                                                                 <input type="date" name="renda_variavel_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Renda variável" id="id_renda_variavel_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Segmento Imobiliário</p>
-                                                                 <input type="text" name="segmento_imobiliario_rpps_valor_segregado" class="form-control" placeholder="Valor Segmento Imobiliário" id="id_segmento_imobiliario_rpps_valor_segregado">
-                                                                 <input type="date" name="segmento_imobiliario_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Segmento Imobiliário" id="id_segmento_imobiliario_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Segmento Imobiliário (Fundos Imobiliários)</p>
-                                                                 <input type="text" name="segmento_fundo_imobiliario_rpps_valor_segregado" class="form-control" placeholder="Valor Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_valor_segregado">
-                                                                 <input type="date" name="segmento_fundo_imobiliario_rpps_apuracao_segregado" class="form-control" placeholder="Data de apuração Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Aplicações em enquadramento</p>
-                                                                 <input type="text" name="aplicacoes_enquadramento_valor_segregado" class="form-control" placeholder="Valor Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_valor_segregado">
-                                                                 <input type="date" name="aplicacoes_enquadramento_apuracao_segregado" class="form-control" placeholder="Data de apuração Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Titulos e Valores não sujeitos ao enquadramento</p>
-                                                                 <input type="text" name="titulos_valores_nao_sujeitos_enquadramento_valor_segregado" class="form-control" placeholder="Valor Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_valor_segregado">
-                                                                 <input type="date" name="titulos_valores_nao_sujeitos_enquadramento_apuracao_segregado" class="form-control" placeholder="Data de apuração Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Demais bens, direitos e ativos</p>
-                                                                 <input type="text" name="demais_bens_valor_segregado" class="form-control" placeholder="Valor Demais Bens" id="id_demais_bens_valor_segregado">
-                                                                 <input type="date" name="demais_bens_apuracao_segregado" class="form-control" placeholder="Data de apuração Demais Bens" id="id_demais_bens_apuracao_segregado">
-                                                                 <hr>
-                                                                 <p>Parcelamentos </p>
-                                                                 <input type="text" name="existem_acordos_de_parcelamento_dividas_segregado" class="form-control" placeholder="EXISTE(M) ACORDO(S) DE PARCELAMENTO DE DÍVIDAS DO ENTE COM O RPPS ENVIADOS PARA A SPREV ?" id="acordos_parcelamentos_segregado" oninput="alterar_visibilidade('acordos_parcelamentos_segregado', 'acordo_segregado_space')" list="sim_nao" maxlength="3" required>
-                                                                 <div id="acordo_segregado_space" style="display: none;">
-                                                                    <input type="text" name="acordo" class="form-control" placeholder="ACORDO Nº (conforme DIPR)" maxlength="50" id="id_acordo_segregado">
-                                                                    <abbr title="Lei / data de aprovação"><input type="date" name="data_aprovacao" class="form-control" placeholder="Lei / data de aprovação" id="id_data_aprovacao_segregado"></abbr>
-                                                                    <input type="text" name="juros" class="form-control" placeholder="Juros ( % a.m.) " id="id_juros_segregado">
-                                                                    <input type="text" name="tipo_juros" class="form-control" placeholder="Tipo de juros" maxlength="15" id="id_tipo_juros_segregado">
-                                                                    <input type="text" name="numero_da_prestacao" class="form-control" placeholder="Nº da prestação em 31/12/22" id="id_numero_da_prestacao_segregado">
-                                                                    <input type="text" name="indice_atualizacao" class="form-control" placeholder="Índice de atualização" maxlength="15" id="id_indice_atualizacao_segregado">
-                                                                    <input type="text" name="ano_acordo" class="form-control" placeholder="Ano do acordo" maxlength="15" id="id_ano_acordo_segregado">
-                                                                    <input type="text" name="valor_divida" class="form-control" placeholder="Valor da dívida (em R$)" id="id_valor_divida_segregado">
-                                                                    <input type="text" name="valor_prestacao" class="form-control" placeholder="Valor prestação em 31/12/22" id="id_valor_prestacao_segregado">
-                                                                    <input type="number" name="prazo_total_meses" class="form-control" placeholder="Prazo total em meses" id="id_prazo_total_meses_segregado">
-                                                                    <input type="text" name="saldo_devedor" class="form-control" placeholder="Saldo devedor em 31/12/22" id="id_saldo_devedor_segregado">
-                                                                    <input type="text" name="acordo_adimplente" class="form-control" placeholder="Acordo adimplente?" maxlength="3" id="id_acordo_adimplente_segregado">
-                                                                 </div>
+                                                            <div id="ativos_garantidores_options" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/ativos_garantidores.html' %}
                                                             </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">
-                                                            Informações complementares
-                                                            <sup>
-                                                                <abbr style="text-decoration: none;" title="XI - a remuneração e o subsídio dos ocupantes de cargos, funções e empregos públicos da administração direta, autárquica e fundacional, dos membros de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios, dos detentores de mandato eletivo e dos demais agentes políticos e os proventos, pensões ou outra espécie remuneratória, percebidos cumulativamente ou não, incluídas as vantagens pessoais ou de qualquer outra natureza, não poderão exceder o subsídio mensal, em espécie, dos Ministros do Supremo Tribunal Federal, aplicando-se como limite, nos Municípios, o subsídio do Prefeito, e nos Estados e no Distrito Federal, o subsídio mensal do Governador no âmbito do Poder Executivo, o subsídio dos Deputados Estaduais e Distritais no âmbito do Poder Legislativo e o subsídio dos Desembargadores do Tribunal de Justiça, limitado a noventa inteiros e vinte e cinco centésimos por cento do subsídio mensal, em espécie, dos Ministros do Supremo Tribunal Federal, no âmbito do Poder Judiciário, aplicável este limite aos membros do Ministério Público, aos Procuradores e aos Defensores Públicos;">
-                                                                    <i class="feather icon-help-circle" style="margin-left: 0.01em;"></i>
-                                                                </abbr>
-                                                            </sup>
-                                                            </p>
-                                                            
-                                                            <abbr title="Teto remuneratório específico executivo" class="abbr_input" style="text-decoration: none;">{{ form.executivo }}</abbr>
-                                                            <abbr title="Teto remuneratório específico legislativo" class="abbr_input" style="text-decoration: none;">{{ form.legislativo }}</abbr>
-                                                            <abbr title="Teto remuneratório específico judiciário" class="abbr_input" style="text-decoration: none;">{{ form.judiciario }}</abbr>
-                                                            <!--<small class="form-text text-muted">Inserir o Código segundo o IBGE.</small>-->
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Dados de cadastro do ente federativo</p>
-                                                            <abbr title="Tipo do ente federativo" style="text-decoration: none;">{{ form.tipo_ente_federativo}}</abbr>
-                                                            <abbr title="Nome do ente" style="text-decoration: none;">{{form.nome_ente}}</abbr>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Dados de cadastro da unidade gestora</p>
-                                                            <abbr title="Nome do dirigente" style="text-decoration: none;">{{ form.nome_dirigente}}</abbr>
-                                                            <abbr title="Telefone" style="text-decoration: none;">{{ form.telefone}}</abbr>
-                                                            <abbr title="Email" style="text-decoration: none;">{{ form.e_mail}}</abbr>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Informações de meta de rentabilidade</p>
-                                                            <abbr title="Meta de taxa de juros" style="text-decoration: none;">{{ form.meta_de_taxa_de_juros}}</abbr>
-                                                            <input type="text" name="city" list="options" id="datalist" oninput="rentabilidade_options('datalist')" placeholder="Selecione" class="form-control"/>
-                                                            <datalist id="options">
-                                                                <option value="INPC"></option>
-                                                                <option value="IPCA"></option>
-                                                                <option value="IGPM"></option>
-                                                                <option value="SELIC"></option>
-                                                                <option value="Outro"></option>
-                                                            </datalist>
-                                                            <div class="form-control" style="text-align: center;" onclick="restaurar()">Restaurar</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">O tesouro é responsável pelo pagamento de algum benefício de aposentadoria e/ou pensão por morte, que não se caracterize como segregação de massas?</p>
-                                                            <select id="treasure_id" name="options" oninput="alterar_visibilidade('treasure_id', 'treasure_space')" class="form-control">
-                                                                <option value="">Selecione</option>
-                                                                <option value="Sim">Sim</option>
-                                                                <option value="Não">Não</option>
-                                                            </select>
-                                                            <div id="treasure_space" style="display: none;">
-                                                                <p style="font-size: 15px; margin-top: 5px; margin-bottom: 5px;">Número da lei que transfere o pagamento de alguns benefícios de aposentadoria e/ou pensão por morte para o TESOURO</p>
-                                                                <input type="text" name="numero_da_lei_transfere_o_pagamento" class="form-control" placeholder="Numero da lei" id="id_numero_da_lei_transfere_o_pagamento">
-                                                                <p style="font-size: 15px; margin-top: 5px; margin-bottom: 5px;">Dispositivo da lei transfere o pagamento de alguns beneficio de aposentadoria e/ou pensão por morte para o TESOURO (Ex.: Art. 1º, Par. 2º, Inc III)</p>
-                                                                <input type="text" name="dispositivo_lei_transfere_pagamento" class="form-control" placeholder="Dispositivo da lei que transfere o pagamento" maxlength="50" id="id_dispositivo_lei_transfere_pagamento">
-                                                                <p style="font-size: 15px; margin-top: 5px; margin-bottom: 5px;">Data da publicação da lei transfere o pagamento de alguns beneficio de aposentadoria e/ou pensão por morte para o TESOURO </p>
-                                                                <input type="date" name="data_publicacao_lei_transfere_pagamento" class="form-control" placeholder="Data publicação lei" id="id_data_publicacao_lei_transfere_pagamento">
+                                                            <div id="base_cadastral_previdenciario_space" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/base_cadastral/informacoes_complementares.html' %}
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Aprovação Prévia da Segregação de Massa de Servidores pelo MPS</p>
-                                                            <abbr title="Tipo de documento" style="text-decoration: none;">{{ form.tipo_documento}}</abbr>
-                                                            <abbr title="Numero do documento" style="text-decoration: none;">{{ form.numero_documento}}</abbr>
-                                                            <abbr title="Data do documento" style="text-decoration: none;">{{form.data_documento}}</abbr>
-                                                            <abbr title="Nome do plano" style="text-decoration: none;">{{form.nome_plano}}</abbr>
-                                                            <abbr title="Critério de Segregação de Massa de Servidores" style="text-decoration: none;">{{form.criterio_segregacao}}</abbr>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Leis vigentes no ente</p>
-                                                            <abbr title="Número da lei de criação do RPPS" style="text-decoration: none;">{{ form.numero_lei_criacao_rpps}}</abbr>
-                                                            <abbr title="Data publicação da lei" style="text-decoration: none;">{{ form.data_publicacao_lei_rpps}}</abbr>
-                                                            <abbr title="Número da lei de criação do RPPS" style="text-decoration: none;">{{ form.numero_lei_reestrutura_rpps}}</abbr>
-                                                            <abbr title="Data publicação da lei que reestruturou o RPPS" style="text-decoration: none;">{{ form.data_publicacao_reestruturou_rpps}}</abbr>
-                                                            <abbr title="Número da lei de criação do RPPS" style="text-decoration: none;">{{ form.numero_lei_define_aliquotas}}</abbr>
-                                                            <abbr title="Data publicação da lei que define aliquotas de contribuição" style="text-decoration: none;">{{ form.publicacao_lei_define_aliquotas}}</abbr>
-                                                            <abbr title="Número da lei de criação do RPPS" style="text-decoration: none;">{{ form.numero_lei_define_aliquotas_contribuicao}}</abbr>
-                                                            <abbr title="Data publicação da lei que define aliquotas de contribuição de aliquotas suplementares" style="text-decoration: none;">{{ form.data_lei_define_aliquotas_contribuicao}}</abbr>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Recenseamento prevídenciário</p>
-                                                            <p style="margin-top: 5px; margin-bottom: 5px;">Foi feito o recenseamento prevídenciário dos Ativos?</p>
-                                                            <abbr title="" style="text-decoration: none;">{{form.ativos_base_cadastral}}</abbr>
-                                                            <div id="ativos_space" style="display: none;">
-                                                                <input type="date" name="data_ultimo_recenseamento_ativos" class="form-control" placeholder="Data ultimo recenseamento" id="id_data_ultimo_recenseamento_ativos">
-                                                                <input type="text" name="percentual_cobertura" class="form-control" placeholder="Percentual de cobertura" id="id_percentual_cobertura_ativos">                                                        
+                                                            <div id="base_tecnica_previdenciario_space" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/base_tecnica/informacoes_complementares.html' %}
                                                             </div>
-                                                            <hr>
-                                                            <p style="margin-top: 5px; margin-bottom: 5px;">Foi feito o recenseamento prevídenciário dos Aposentados?</p>
-                                                            <abbr title="" style="text-decoration: none;">{{form.aposentados_base_cadastral}}</abbr>
-                                                            <div id="aposentados_space" style="display: none;">
-                                                                <input type="date" name="data_ultimo_recenseamento_aposentados" class="form-control" placeholder="Data ultimo recenseamento" id="id_data_ultimo_recenseamento_aposentados">
-                                                                <input type="text" name="percentual_cobertura" class="form-control" placeholder="Percentual de cobertura" id="percentual_cobertura_aposentados">
+                                                            <div id="base_normativa_previdenciario_space" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/base_normativa/informacoes_complementares.html' %}
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Ativos garantidores dos compromissos do plano de benefícios do fundo prevídenciário</p>
-                                                            <p style="font-size: 15px;">Renda fixa</p>
-                                                            {{form.renda_fixa_valor}}
-                                                            {{form.renda_fixa_apuracao}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Renda variável</p>
-                                                            {{form.renda_variavel_valor}}
-                                                            {{form.renda_variavel_apuracao}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Setor Imobiliário (Bens Imóveis)</p>
-                                                            {{form.imobiliario_valor_imoveis}}
-                                                            {{form.imobiliario_apuracao_imoveis}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Setor Imobiliário (Fundos Imobiliários)</p>
-                                                            {{form.fundos_valor_imoveis}}
-                                                            {{form.fundos_apuracao_imoveis}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Aplicações em enquadramento valor</p>
-                                                            {{form.enquadramento_valor}}
-                                                            {{form.enquadramento_apuracao}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Titulos e Valores não sujeitos ao enquadramento valor</p>
-                                                            {{form.titulos_valores_nao_enquadramento_valor}}
-                                                            {{form.titulos_valores_nao_enquadramento_apuracao}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Demais bens, direitos e ativos valor</p>
-                                                            {{form.bens_direitos_ativos_valor}}
-                                                            {{form.bens_direitos_ativos_apuracao}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Alíquotas de contribuição previdenciária</p>
-                                                            <p style="font-size: 15px;">Alíquota Ativos</p>
-                                                            {{form.aliquota_ativos}}
-                                                            {{form.base_calculo_ativos}}
-                                                            <hr>
+                                                            <div id="mantido_pelo_tesouro_space" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/mantido_pelo_tesouro/mantido_pelo_tesouro.html' %}
+                                                            </div>
+                                                            <div id="base_normativa_financeiro_space" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/segregacao/main.html' %}
+                                                            </div>
+                                                            <div id="parcelamentos" style="display: none;">
+                                                                {% include 'includes/formulario_atuarial/parcelamentos.html' %}
+                                                                <div id="acordos_space" style="display: none;">
+                                                                    {{ formset.management_form }}
+                                                                    {% for i in formset %}
+                                                                    <div class='table'>
+                                                                        <table class='col-12 mb-1'>
+                                                                            {{i}}
+                                                                        </table> 
+                                                                    </div>
 
-                                                            <p style="font-size: 15px;">Alíquota Aposentados</p>
-                                                            {{form.aliquota_aposentados}}
-                                                            {{form.base_calculo_aposentados}}
-                                                            <hr>
-
-                                                            <p style="font-size: 15px;">Alíquota Pensionistas</p>
-                                                            {{form.aliquota_pensionistas}}
-                                                            {{form.base_calculo_pensionistas}}
-                                                            <hr>
-
-                                                            <p style="font-size: 15px;">Alíquota PATRONAL relativo aos servidores ativos</p>
-                                                            {{form.aliquota_patronal_servidores_ativos}}
-                                                            {{form.base_calculo_aliquota_patronal}}
-                                                            <hr>
-
-                                                            <p style="font-size: 15px;">Administração do FUNDO PREVIDENCIÁRIO</p>
-                                                            {{form.despesa_custeada}}
-                                                            <datalist id="administradoras">
-                                                                <option value="DIRETAMENTE PELO TESOURO">
-                                                                <option value="COM RECURSOS DO RPPS ATRAVÉS DE ALÍQUOTA">
-                                                            </datalist>
-                                                            {{form.numero_norma_define_custeio_despesas_administrativas}}
-                                                            {{form.artigo_norma_define_custeio_despesas_administrativas}}
-                                                            {{form.aliquota_utilizada_calculo_limite_gastos}}
-                                                            <div id="despesa_space" style="display: none;">
-                                                                <input type="text" name="aliquota_custeio_despesas_administrativas" class="form-control" placeholder="Alíquota utilizada para o CUSTEIO das despesas administrativas (custeio administrativo)	" id="id_aliquota_custeio_despesas_administrativas">
-                                                                <input type="text" name="aliquota_incluida_na_aliquota_patronal" class="form-control" placeholder="A aliquota para o CUSTEIO das despesas administrativas está incluida na aliquota patronal informada no quadro anterior ?	" maxlength="50" id="id_aliquota_incluida_na_aliquota_patronal">
-                                                            </div>
-                                                            <hr>
-                                                            <p style="font-size: 15px;">O ente contribui sobre os aposentados e pensionistas?</p>
-                                                            {{form.ente_contribui}}
-                                                            <div id="ente_space" style="display: none;">
-                                                                <input type="text" name="base_calculo_patronal_sobre_aposentados_pensionistas" class="form-control" placeholder="Base de calculo patronal sobre aposentados e pensionistas" id="base_calculos_id" maxlength="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <p style="font-size: 15px;">Valor remuneratório dos entes</p>
-                                                            {{form.valor_remuneracao_servidores_ativos}}
-                                                            {{form.valor_proventos_aposentados}}
-                                                            {{form.valor_proventos_pensionistas}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Base de calculo da taxa de adminstração </p>
-                                                            {{form.base_calculo_taxa_administracao_2022}}
-                                                            {{form.base_calculo_taxa_administracao_2021}}
-                                                            {{form.base_calculo_taxa_administracao_2020}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">% da taxa de administração</p>
-                                                            {{form.taxa_administracao_2022}}
-                                                            {{form.taxa_administracao_2021}}
-                                                            {{form.taxa_administracao_2020}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Gastos com as despesas administrativas</p>
-                                                            {{form.gastos_despesas_administrativas_2022}}
-                                                            {{form.gastos_despesas_administrativas_2021}}
-                                                            {{form.gastos_despesas_administrativas_2020}}
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Base de contribuição dos servidores ativos</p>
-                                                            {{form.base_contribuicao_servidores_ativos_2022}}
-                                                            {{form.base_contribuicao_servidores_ativos_2021}}
-                                                            {{form.base_contribuicao_servidores_ativos_2020}}
-                                                            <hr>
-
-                                                            <p style="font-size: 15px;">Compensação Previdenciária</p>
-                                                            {{form.convenio_assinado_compensacao_previdenciaria}}
-                                                            <datalist id="sim_nao">
-                                                                <option value="Sim">
-                                                                <option value="Não">
-                                                            </datalist>
-                                                            <div id="compensacao_previdenciaria_space" style="display: none;">
-                                                                <input type="text" name="informado_base_cadastral_aposentados_e_ou_pensionistas" class="form-control" placeholder="Foi informado na base cadastral dos aposentados e/ou pensionistas, o valor que este Ente Publico esta recebendo de compensação previdenciária?" maxlength="50" id="id_informado_base_cadastral_aposentados_e_ou_pensionistas">
-                                                                <input type="text" name="informar_fluxo_mensal_a_pagar" class="form-control" placeholder="Informar o fluxo mensal médio, sobre os valores a pagar" id="id_informar_fluxo_mensal_a_pagar">
-                                                                <input type="text" name="estoque_compensacao_previdenciaria_receber" class="form-control" placeholder="Há ESTOQUE DE COMPENSAÇÃO PREVIDENCIÁRIA para receber?" id="id_estoque_compensacao_previdenciaria_receber" list="sim_nao">
-                                                                <input type="text" name="informar_fluxo_mensal_valores_areceber" class="form-control" placeholder="Se NÃO, informar o fluxo mensal médio, sobre os valores a receber" id="id_informar_fluxo_mensal_valores_areceber">
-                                                            </div>
-
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Equacionamento Do Déficit Atuarial</p>
-                                                            {{form.ente_possui_plano_equacionamento_deficit_atuarial}}
-                                                            <abbr title="QUAL É O MÊS E ANO QUE DEU INÍCIO AO PLANO DE EQUACIONAMENTO (digite apenas números. Ex.:  012016)">{{form.mes_ano_inicio_plano_equacionamento}}</abbr>
-                                                            {{form.numero_norma_define_plano_amortizacao}}
-                                                            <abbr title="DATA DA PUBLICAÇÃO DA LEI" style="text-decoration: underline;">{{form.data_publicacao_lei}}</abbr>
-                                                            <hr>
-                                                            <p style="font-size: 15px;">Constituição fundo administrativo</p>
-                                                            {{form.constituicao_fundo_administrativo}}
-                                                            <hr>
-                                                            <div id="valores_rpps_space" style="display: none;">
-                                                                <p style="font-size: 15px;">Dados patrimoniais do RPPS</p>
-                                                                <p style="font-size: 15px;">Renda Fixa</p>
-                                                                <input type="text" name="renda_fixa_valor_rpps" class="form-control" placeholder="Valor Renda Fixa" id="id_renda_fixa_valor_rpps">
-                                                                <abbr title="Renda Fixa Data de Apuração"><input type="date" name="renda_fixa_valor_rpps_apuracao" class="form-control" placeholder="Data de apuração Renda Fixa" id="id_renda_fixa_valor_rpps_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Renda Variável</p>
-                                                                <input type="text" name="renda_variavel_rpps" class="form-control" placeholder="Valor Renda variável" id="id_renda_variavel_rpps">
-                                                                <abbr title="Renda variável Data de Apuração"><input type="date" name="renda_variavel_rpps_apuracao" class="form-control" placeholder="Data de apuração Renda variável" id="id_renda_variavel_rpps_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Segmento Imobiliário (Bens Imóveis)</p>
-                                                                <input type="text" name="segmento_imobiliario_rpps_valor" class="form-control" placeholder="Valor Segmento Imobiliário" id="id_segmento_imobiliario_rpps_valor">
-                                                                <abbr title="Segmento Imobiliário (Bens Imóveis) Data de Apuração"><input type="date" name="segmento_imobiliario_rpps_apuracao" class="form-control" placeholder="Data de apuração Segmento Imobiliário" id="id_segmento_imobiliario_rpps_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Segmento Imobiliário (Fundos Imobiliários)</p>
-                                                                <input type="text" name="segmento_fundo_imobiliario_rpps_valor" class="form-control" placeholder="Valor Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_valor">
-                                                                <abbr title="Segmento Imobiliário (Fundos Imobiliários) Data de Apuração"><input type="date" name="segmento_fundo_imobiliario_rpps_apuracao" class="form-control" placeholder="Data de apuração Fundos Imobiliários" id="id_segmento_fundo_imobiliario_rpps_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Aplicações em enquadramento</p>
-                                                                <input type="text" name="aplicacoes_enquadramento_valor" class="form-control" placeholder="Valor Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_valor">
-                                                                <abbr title="Aplicações em enquadramento Data de Apuração"><input type="date" name="aplicacoes_enquadramento_apuracao" class="form-control" placeholder="Data de apuração Aplicações em Enquadramento" id="id_aplicacoes_enquadramento_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Titulos e Valores não sujeitos ao enquadramento</p>
-                                                                <input type="text" name="titulos_valores_nao_sujeitos_enquadramento_valor" class="form-control" placeholder="Valor Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_valor">
-                                                                <abbr title="Titulos e Valores não sujeitos ao enquadramento Data de Apuração"><input type="date" name="titulos_valores_nao_sujeitos_enquadramento_apuracao" class="form-control" placeholder="Data de apuração Titulos e Valores não Sujeitos ao Enquadramento" id="id_titulos_valores_nao_sujeitos_enquadramento_apuracao"></abbr>
-                                                                <hr>
-                                                                <p style="font-size: 15px;">Demais bens, direitos e ativos</p>
-                                                                <input type="text" name="demais_bens_valor" class="form-control" placeholder="Valor Demais Bens" id="id_demais_bens_valor">
-                                                                <abbr title="Demais bens, direitos e ativos Data de Apuração"><input type="date" name="demais_bens_apuracao" class="form-control" placeholder="Data de apuração Demais Bens" id="id_demais_bens_apuracao"></abbr>
-                                                                <hr>
-                                                        
-                                                            </div>
-                                                            <p style="font-size: 15px;">Acordos de Parcelamento de Dívidas</p>
-                                                            {{form.existem_acordos_de_parcelamento_dividas}}
-                                                            <div id="acordos_space" style="display: none;">
-                                                                {{ formset.management_form }}
-                                                                {% for i in formset %}
-                                                                <div class='table'>
-                                                                    <table class='no_error col-12 mb-1'>
-                                                                        {{i}}
-                                                                    </table> 
+                                                                    {% endfor %}
+                                                                    <hr>
+                                                                    <button type="button" class="label text-white f-2 arredondar-botao" style="background: #000;"   id="add_more" >Adicionar</button>
                                                                 </div>
-                                                                {% endfor %}
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <button type="button" class="label theme-bg text-white f-2 arredondar-botao" id="add_more">Adicionar</button>
-                                                        </div>
-                                                    <div>   
-                                                    <div class="col-sm-12 mb-1">
-                                                        <div class="form-group">
-                                                            <button type="submit" class="label theme-bg text-white f-2 arredondar-botao">Salvar</button>
-                                                        </div>
-                                                    <div>                                            
+                                                    </div>                                           
                                                 </div>                                             
                                             </form>
                                         </div>
@@ -508,18 +89,17 @@
     </div>
     <!-- [ Main Content ] end -->
     
-    <!-- [ Main Content ] end -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script>
     $('#add_more').click(function() {
         cloneMore('div.table:last', 'id');
     });
     function cloneMore(selector, type) {
     var newElement = $(selector).clone(true);
-    var total = $('#id_' + type + '-TOTAL_FORMS').val();
+    var total = $('#id' + type + '-TOTALFORMS').val();
     newElement.find(':input').each(function() {
         var name = $(this).attr('name').replace('-' + (total-1) + '-','-' + total + '-');
-        var id = 'id_' + name;
+        var id = 'id' + name;
         $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
     });
     newElement.find('label').each(function() {
@@ -531,10 +111,10 @@
     $(selector).after(newElement);
     }
 </script>
+
+
+
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
-
-
-{% endblock javascripts %}
+{% block javascripts %}{% endblock javascripts %}
